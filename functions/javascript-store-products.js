@@ -1,5 +1,4 @@
 const data = require("./data.js");
-console.log(data);
 exports.handler = async (event, context, callback) => {
   return (
     null,
