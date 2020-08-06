@@ -1,10 +1,21 @@
-const data = require("./data.js");
+require('dotenv').config();
+
+const Airtable = require('airtable');
+
+Airtable.configure({ apiKey: process.env.AIRTABLE_API_KEY });
+const base = Airtable.base(process.env.AIRTABLE_BASE_ID);
+const table = base.table('store');
+
 exports.handler = async (event, context, callback) => {
+  const response = await table.select({}).firstPage();
+  const data = response.map((product) => {
+    return { id: product.id, fields: product.fields };
+  });
   return (
     null,
     {
       headers: {
-        "Access-Control-Allow-Origin": "*",
+        'Access-Control-Allow-Origin': '*',
       },
       statusCode: 200,
       body: JSON.stringify(data),
