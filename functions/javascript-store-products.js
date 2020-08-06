@@ -9,6 +9,7 @@ const table = base.table('store');
 exports.handler = async (event, context, callback) => {
   const response = await table.select({}).firstPage();
   const data = response.map((product) => {
+    delete product.fields.description;
     return { id: product.id, fields: product.fields };
   });
   return (
