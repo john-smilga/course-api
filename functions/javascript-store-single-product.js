@@ -36,6 +36,7 @@ exports.handler = async (event, context, callback) => {
         body: 'sorry, no such product exist',
         statusText: 'sorry, no such product exist',
         message: 'sorry, no such product exist',
+        statusMessage: 'sorry, no such product exist',
       }
     );
   }
