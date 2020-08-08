@@ -34,6 +34,7 @@ exports.handler = async (event, context, callback) => {
         },
         statusCode: 404,
         body: 'sorry, no such product exist',
+        statusText: 'sorry, no such product exist',
       }
     );
   }
