@@ -33,10 +33,7 @@ exports.handler = async (event, context, callback) => {
           'Access-Control-Allow-Origin': '*',
         },
         statusCode: 404,
-        body: 'sorry, no such product exist',
-        statusText: 'sorry, no such product exist',
-        message: 'sorry, no such product exist',
-        statusMessage: 'sorry, no such product exist',
+        body: 'Not Found',
       }
     );
   }
