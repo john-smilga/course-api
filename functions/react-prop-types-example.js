@@ -18,7 +18,7 @@ exports.handler = async (event, context, callback) => {
   });
   const product = { ...data[5], price: undefined, image: undefined };
 
-  data = [...data.splice(0, 4), product];
+  data = [...data.splice(-4), product];
 
   return (
     null,
