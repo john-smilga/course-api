@@ -12,9 +12,9 @@ exports.handler = async (event, context, callback) => {
     delete product.fields.description;
     const id = product.id;
     const name = product.fields.name;
-    const image = product.fields.image[0].url;
+    const url = product.fields.image[0].url;
     const price = product.fields.price / 100;
-    return { id, name, image, price };
+    return { id, name, image: { url }, price };
   });
   const product = { ...data[5], price: undefined, image: undefined };
 
