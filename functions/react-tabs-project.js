@@ -14,12 +14,14 @@ exports.handler = async (event, context, callback) => {
     return duty.fields;
   });
 
-  const jobs = jobsResponse.map((job) => {
-    const getDuty = duties.find((duty) => duty.jobs[0] === job.id);
-    const newDuties = Object.values(getDuty);
-    newDuties.shift();
-    return { id: job.id, ...job.fields, duties: newDuties };
-  });
+  const jobs = jobsResponse
+    .map((job) => {
+      const getDuty = duties.find((duty) => duty.jobs[0] === job.id);
+      const newDuties = Object.values(getDuty);
+      newDuties.shift();
+      return { id: job.id, ...job.fields, duties: newDuties };
+    })
+    .sort((a, b) => b.order - a.order);
   return (
     null,
     {
