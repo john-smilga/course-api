@@ -17,8 +17,7 @@ exports.handler = async (event, context, callback) => {
   const jobs = jobsResponse.map((job) => {
     const getDuty = duties.find((duty) => duty.jobs[0] === job.id);
     const newDuties = Object.values(getDuty);
-    newDuties.pop();
-    console.log(newDuties);
+    newDuties.shift();
     return { id: job.id, ...job.fields, duties: newDuties };
   });
   return (
